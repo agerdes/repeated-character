@@ -11,8 +11,13 @@ class FrequencyFinder
        end
     end
 
-    return arr.max_by do |char|
-      count[char]
+    case sequence
+    when "" || nil
+      return "Please enter a valid string"
+    else
+      return arr.max_by do |char|
+        count[char]
+      end
     end
   end
 end
