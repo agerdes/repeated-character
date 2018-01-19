@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
+gem 'highline'
 
-group :development do
+group :test do
   gem 'rspec'
 end

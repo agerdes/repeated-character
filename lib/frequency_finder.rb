@@ -17,7 +17,7 @@ class FrequencyFinder
 
   def find(sequence)
     if sequence.nil? || sequence.empty?
-      return "Please enter a valid string"
+      "Please enter a valid string"
     else
       most_frequent_characters(sequence).keys.join(', ')
     end
