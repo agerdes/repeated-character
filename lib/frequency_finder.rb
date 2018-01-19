@@ -1,23 +1,25 @@
 class FrequencyFinder
-
-  def most_repeated(sequence)
-    count = {}
-    arr = sequence.split('')
-    arr.each do |char|
-       if count.has_key?(char)
-         count[char] += 1
-       else
-         count[char] = 1
-       end
+  def character_frequency(sequence)
+    sequence.split('').inject(Hash.new(0)) do |total, e|
+      total[e] += 1 ; total
     end
+  end
 
-    case sequence
-    when "" || nil
+  def max_frequency(sequence)
+    character_frequency(sequence).values.max
+  end
+
+  def most_frequent_characters(sequence)
+    character_frequency(sequence).select do |key, val|
+      val == max_frequency(sequence)
+    end
+  end
+
+  def find(sequence)
+    if sequence.nil? || sequence.empty?
       return "Please enter a valid string"
     else
-      return arr.max_by do |char|
-        count[char]
-      end
+      most_frequent_characters(sequence).keys.join(', ')
     end
   end
 end

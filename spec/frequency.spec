@@ -7,7 +7,7 @@ RSpec.describe FrequencyFinder, "#most_repeated" do
     let(:answer) { "a" }
 
     it "returns the most frequent character" do
-      expect(finder.most_repeated(input)).to eq answer
+      expect(finder.find(input)).to eq answer
     end
   end
 
@@ -16,7 +16,7 @@ RSpec.describe FrequencyFinder, "#most_repeated" do
     let(:answer) { "a" }
 
     it "returns the most frequent character" do
-      expect(finder.most_repeated(input)).to eq answer
+      expect(finder.find(input)).to eq answer
     end
   end
 
@@ -25,7 +25,16 @@ RSpec.describe FrequencyFinder, "#most_repeated" do
     let(:reject_msg) { "Please enter a valid string" }
 
     it "returns a message that there was no correct input" do
-      expect(finder.most_repeated(input)).to eq reject_msg
+      expect(finder.find(input)).to eq reject_msg
+    end
+  end
+
+  context "equally frequent characters" do
+    let(:input) { "abc" }
+    let(:answer) { "a, b, c" }
+
+    it "returns the  characters repeated equally" do
+      expect(finder.find(input)).to eq answer
     end
   end
 end
